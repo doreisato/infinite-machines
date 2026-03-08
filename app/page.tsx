@@ -29,6 +29,14 @@ const projects: Project[] = [
     status: "live",
   },
   {
+    id: "fairbill",
+    name: "FairBill",
+    description:
+      "Medicare-benchmarked pricing for medical bills. Get negotiation leverage before collections. CPT code lookup in seconds.",
+    url: "https://fairbill-production.up.railway.app",
+    status: "planned",
+  },
+  {
     id: "housingalert",
     name: "HousingAlert",
     description:

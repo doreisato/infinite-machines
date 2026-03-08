@@ -21,3 +21,13 @@
 - URL: https://roastmysite-production-a490.up.railway.app (repurposed Railway service from roastmysite)
 - Status: live (HTTP 200 verified)
 - Compliance: free MVP, non-technical audience focus, dark monochrome IM style, Infinite Machines footer.
+
+## 2026-03-08 08:20 — FairBill
+- Product: FairBill
+- UVP: Medicare-benchmarked pricing for medical bills. Get negotiation leverage before collections.
+- URL: https://fairbill-production.up.railway.app
+- Status: planned (code complete, Railway deployment blocked: CLI unauthorized, free plan at 5/5 capacity)
+- GitHub: https://github.com/doreisato/fairbill (commits: 43c2962, 1552eb2)
+- Compliance: free MVP, non-technical audience (uninsured/underinsured patients), dark monochrome IM style, Infinite Machines footer, legal disclaimers included.
+- Supabase: Schema ready (supabase-schema.sql), table creation pending manual SQL execution.
+- Next: Deploy when Railway capacity available or repurpose existing service slot.

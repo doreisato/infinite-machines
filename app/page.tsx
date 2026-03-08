@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import Link from "next/link";
+import FleetDashboard from "./components/FleetDashboard";
 
 interface Project {
   id: string;
@@ -63,9 +63,10 @@ export default function Home() {
         </a>
       </nav>
 
-      {/* Header */}
-      <div className="flex-1 flex flex-col items-center justify-center px-6">
-        <div className="text-center mb-20">
+      {/* Content */}
+      <div className="flex-1 flex flex-col items-center px-6 pt-16">
+        {/* Header */}
+        <div className="text-center mb-16">
           <h1 className="text-5xl md:text-7xl font-semibold text-white tracking-tight mb-4">
             Infinite Machines
           </h1>
@@ -74,80 +75,103 @@ export default function Home() {
           </p>
         </div>
 
-        {/* Project Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-3 max-w-[720px] w-full">
-          {projects.map((project) => (
-            <button
-              key={project.id}
-              onClick={() =>
-                setActiveProject(activeProject === project.id ? null : project.id)
-              }
-              className={`
-                aspect-square rounded-lg border transition-all duration-300 cursor-pointer
-                flex items-center justify-center p-4 relative group
-                ${
-                  activeProject === project.id
-                    ? "border-neutral-500 bg-neutral-900"
-                    : "border-neutral-800 bg-transparent hover:border-neutral-600 hover:bg-neutral-900/50"
-                }
-              `}
-            >
-              <span
-                className={`
-                text-xs font-medium tracking-wide uppercase transition-colors duration-300
-                ${activeProject === project.id ? "text-white" : "text-neutral-600 group-hover:text-neutral-400"}
-              `}
-              >
-                {project.name}
-              </span>
-
-              {project.status === "live" && (
-                <span className="absolute top-3 right-3 h-1.5 w-1.5 rounded-full bg-emerald-500" />
-              )}
-            </button>
-          ))}
-
-          {/* Empty tiles for future projects */}
-          {[...Array(Math.max(0, 5 - projects.length))].map((_, i) => (
-            <div
-              key={`empty-${i}`}
-              className="aspect-square rounded-lg border border-neutral-900 bg-transparent flex items-center justify-center"
-            >
-              <span className="text-neutral-800 text-xs">—</span>
-            </div>
-          ))}
+        {/* Fleet Dashboard */}
+        <div className="w-full max-w-[900px] mb-20">
+          <h2 className="text-[10px] text-neutral-600 uppercase tracking-[4px] text-center mb-8">
+            Fleet Status
+          </h2>
+          <FleetDashboard />
         </div>
 
-        {/* Project Detail Panel */}
-        <div
-          className={`
-            max-w-[720px] w-full mt-6 overflow-hidden transition-all duration-300
-            ${active ? "max-h-[300px] opacity-100" : "max-h-0 opacity-0"}
-          `}
-        >
-          {active && (
-            <div className="border border-neutral-800 rounded-lg p-6">
-              <div className="flex items-start justify-between mb-3">
-                <div>
-                  <h2 className="text-sm font-medium text-white">{active.name}</h2>
-                  <span className="text-xs text-emerald-500 uppercase tracking-widest">
-                    {active.status}
-                  </span>
-                </div>
-                <a
-                  href={active.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="bg-white text-black px-4 py-2 rounded text-xs font-medium hover:bg-neutral-200 transition-colors duration-150"
+        {/* Divider */}
+        <div className="w-px h-12 bg-gradient-to-b from-neutral-800 to-transparent mb-12" />
+
+        {/* Projects Section */}
+        <div className="w-full max-w-[720px] mb-20">
+          <h2 className="text-[10px] text-neutral-600 uppercase tracking-[4px] text-center mb-8">
+            Projects
+          </h2>
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+            {projects.map((project) => (
+              <button
+                key={project.id}
+                onClick={() =>
+                  setActiveProject(
+                    activeProject === project.id ? null : project.id
+                  )
+                }
+                className={`
+                  aspect-square rounded-lg border transition-all duration-300 cursor-pointer
+                  flex items-center justify-center p-4 relative group
+                  ${
+                    activeProject === project.id
+                      ? "border-neutral-500 bg-neutral-900"
+                      : "border-neutral-800 bg-transparent hover:border-neutral-600 hover:bg-neutral-900/50"
+                  }
+                `}
+              >
+                <span
+                  className={`
+                  text-xs font-medium tracking-wide uppercase transition-colors duration-300
+                  ${
+                    activeProject === project.id
+                      ? "text-white"
+                      : "text-neutral-600 group-hover:text-neutral-400"
+                  }
+                `}
                 >
-                  Open
-                </a>
+                  {project.name}
+                </span>
+
+                {project.status === "live" && (
+                  <span className="absolute top-3 right-3 h-1.5 w-1.5 rounded-full bg-emerald-500" />
+                )}
+              </button>
+            ))}
+
+            {[...Array(Math.max(0, 5 - projects.length))].map((_, i) => (
+              <div
+                key={`empty-${i}`}
+                className="aspect-square rounded-lg border border-neutral-900 bg-transparent flex items-center justify-center"
+              >
+                <span className="text-neutral-800 text-xs">—</span>
               </div>
-              <p className="text-sm text-neutral-400 leading-relaxed">
-                {active.description}
-              </p>
-            </div>
-          )}
+            ))}
+          </div>
+
+          {/* Project Detail Panel */}
+          <div
+            className={`
+              w-full mt-6 overflow-hidden transition-all duration-300
+              ${active ? "max-h-[300px] opacity-100" : "max-h-0 opacity-0"}
+            `}
+          >
+            {active && (
+              <div className="border border-neutral-800 rounded-lg p-6">
+                <div className="flex items-start justify-between mb-3">
+                  <div>
+                    <h2 className="text-sm font-medium text-white">
+                      {active.name}
+                    </h2>
+                    <span className="text-xs text-emerald-500 uppercase tracking-widest">
+                      {active.status}
+                    </span>
+                  </div>
+                  <a
+                    href={active.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="bg-white text-black px-4 py-2 rounded text-xs font-medium hover:bg-neutral-200 transition-colors duration-150"
+                  >
+                    Open
+                  </a>
+                </div>
+                <p className="text-sm text-neutral-400 leading-relaxed">
+                  {active.description}
+                </p>
+              </div>
+            )}
+          </div>
         </div>
       </div>
 

@@ -13,10 +13,10 @@ interface Project {
 
 const projects: Project[] = [
   {
-    id: "fastpath-benefits-screener",
-    name: "FastPath Benefits Screener",
+    id: "benefits-navigator",
+    name: "Benefits Navigator",
     description:
-      "Free one-minute pre-screen for SNAP, Medicaid, WIC, and LIHEAP with plain-language next steps.",
+      "Find government benefits you qualify for. Free one-minute pre-screen for SNAP, Medicaid, WIC, and LIHEAP.",
     url: "https://benefits-navigator-production.up.railway.app",
     status: "live",
   },
@@ -24,7 +24,7 @@ const projects: Project[] = [
     id: "wageshield",
     name: "WageShield",
     description:
-      "Instant overtime and wage calculator for hourly workers. Deterministic math, no signup, no data stored.",
+      "Find out if your paycheck is missing money. Instant overtime and wage calculator for hourly workers.",
     url: "https://roastmysite-production-a490.up.railway.app",
     status: "live",
   },

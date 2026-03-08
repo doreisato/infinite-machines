@@ -17,23 +17,16 @@ const projects: Project[] = [
     name: "FastPath Benefits Screener",
     description:
       "Free one-minute pre-screen for SNAP, Medicaid, WIC, and LIHEAP with plain-language next steps.",
-    url: "https://fastpath-benefits-screener-production.up.railway.app",
-    status: "building",
-  },
-  {
-    id: 'feeshield',
-    name: 'FeeShield',
-    description: 'Detects common bank/utility late-fee risks and provides a simple due-date action plan.',
-    url: 'https://feeshield-production.up.railway.app',
-    status: 'live',
-  },
-  {
-    id: "benefits-navigator",
-    name: "Benefits Navigator",
-    description:
-      "30-second calculator that shows you government programs you qualify for. SNAP, WIC, Medicaid, and more. Free, private, instant.",
     url: "https://benefits-navigator-production.up.railway.app",
     status: "live",
+  },
+  {
+    id: "feeshield",
+    name: "FeeShield",
+    description:
+      "Detects common bank/utility late-fee risks and provides a simple due-date action plan.",
+    url: "https://feeshield-production.up.railway.app",
+    status: "planned",
   },
 ];
 

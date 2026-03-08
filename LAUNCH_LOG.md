@@ -32,6 +32,16 @@
 - Supabase: schema/seed artifacts present (`supabase-schema.sql`, `seed-db.mjs`); requires table creation in project `jeollamxgbmlhvzdgoqt` before full data-backed launch.
 - Next: free one Railway slot (or repoint existing service) via dashboard, run deploy, verify HTTP 200, then flip IM tile from planned -> live and publish [HOURLY LAUNCH] to group.
 
+## 2026-03-08 12:xx — Utility Shutoff Lifeline (Hourly Launch)
+- Product: Utility Shutoff Lifeline
+- UVP: Know your utility shutoff deadline and protections in one minute, with immediate next actions.
+- URL: https://utility-shutoff-lifeline-production.up.railway.app
+- Status: deploying (service created and building in Railway; public URL still HTTP 404 at validation time)
+- Delegation: SHO completed implementation + repo push (`c83ae60`) and triggered Railway deploy via project `0f6153ba-7a9b-4cae-9927-dcc41fd9c474`; NAO/YUI/JIN/TAI delegation attempted but blocked by model quota/rate limits in this cycle.
+- Compliance: free MVP, non-technical audience focus, dark monochrome style, no emoji, Infinite Machines footer, informational disclaimer included.
+- IM Portfolio: tile added with status `building` and launch URL.
+- Next: wait for Railway build completion, verify HTTP 200, flip tile status to `live`, then post `[HOURLY LAUNCH]` to Telegram group `-1003816885121`.
+
 ## 2026-03-08 12:22 — Utility Shutoff Lifeline
 - Product: Utility Shutoff Lifeline
 - UVP: See your utility shutoff deadline, protections, and emergency action links in one screen before disconnection.

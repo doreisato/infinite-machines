@@ -101,22 +101,23 @@ export default function Home() {
                   )
                 }
                 className={`
-                  aspect-square rounded-lg border transition-all duration-300 cursor-pointer
-                  flex items-center justify-center p-4 relative group
+                  aspect-square rounded-[12px] border transition-all duration-200 cursor-pointer
+                  flex items-center justify-center p-4 relative group bg-[#111113]
+                  hover:-translate-y-[2px]
                   ${
                     activeProject === project.id
-                      ? "border-neutral-500 bg-neutral-900"
-                      : "border-neutral-800 bg-transparent hover:border-neutral-600 hover:bg-neutral-900/50"
+                      ? "border-indigo-500/35 shadow-[0_0_20px_rgba(99,102,241,0.18)]"
+                      : "border-[#222] hover:border-[#3a3a3d] hover:shadow-[0_0_16px_rgba(255,255,255,0.06)]"
                   }
                 `}
               >
                 <span
                   className={`
-                  text-xs font-medium tracking-wide uppercase transition-colors duration-300
+                  text-[11px] font-medium tracking-[0.16em] uppercase transition-colors duration-200 text-center
                   ${
                     activeProject === project.id
                       ? "text-white"
-                      : "text-neutral-600 group-hover:text-neutral-400"
+                      : "text-neutral-500 group-hover:text-neutral-300"
                   }
                 `}
                 >
@@ -124,7 +125,7 @@ export default function Home() {
                 </span>
 
                 {project.status === "live" && (
-                  <span className="absolute top-3 right-3 h-1.5 w-1.5 rounded-full bg-emerald-500" />
+                  <span className="absolute top-3 right-3 h-1.5 w-1.5 rounded-full bg-emerald-500 shadow-[0_0_6px_rgba(34,197,94,0.6)]" />
                 )}
               </button>
             ))}
@@ -132,7 +133,7 @@ export default function Home() {
             {[...Array(Math.max(0, 5 - projects.length))].map((_, i) => (
               <div
                 key={`empty-${i}`}
-                className="aspect-square rounded-lg border border-neutral-900 bg-transparent flex items-center justify-center"
+                className="aspect-square rounded-[12px] border border-[#1a1a1a] bg-[#0f0f10] flex items-center justify-center"
               >
                 <span className="text-neutral-800 text-xs">—</span>
               </div>
@@ -147,13 +148,13 @@ export default function Home() {
             `}
           >
             {active && (
-              <div className="border border-neutral-800 rounded-lg p-6">
-                <div className="flex items-start justify-between mb-3">
+              <div className="border border-[#222] rounded-[12px] p-6 bg-[#111113] shadow-[0_0_20px_rgba(255,255,255,0.04)]">
+                <div className="flex items-start justify-between mb-3 gap-4">
                   <div>
-                    <h2 className="text-sm font-medium text-white">
+                    <h2 className="text-sm font-semibold text-white tracking-wide">
                       {active.name}
                     </h2>
-                    <span className="text-xs text-emerald-500 uppercase tracking-widest">
+                    <span className="text-[10px] text-neutral-500 uppercase tracking-[0.16em]">
                       {active.status}
                     </span>
                   </div>
@@ -161,7 +162,7 @@ export default function Home() {
                     href={active.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="bg-white text-black px-4 py-2 rounded text-xs font-medium hover:bg-neutral-200 transition-colors duration-150"
+                    className="bg-white text-black px-4 py-2 rounded-[8px] text-xs font-medium hover:bg-neutral-200 transition-colors duration-150"
                   >
                     Open
                   </a>

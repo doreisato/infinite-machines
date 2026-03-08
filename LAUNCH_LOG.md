@@ -22,12 +22,12 @@
 - Status: live (HTTP 200 verified)
 - Compliance: free MVP, non-technical audience focus, dark monochrome IM style, Infinite Machines footer.
 
-## 2026-03-08 08:20 — FairBill
+## 2026-03-08 10:24 — FairBill (Hourly Launch Attempt)
 - Product: FairBill
 - UVP: Medicare-benchmarked pricing for medical bills. Get negotiation leverage before collections.
 - URL: https://fairbill-production.up.railway.app
-- Status: planned (code complete, Railway deployment blocked: CLI unauthorized, free plan at 5/5 capacity)
-- GitHub: https://github.com/doreisato/fairbill (commits: 43c2962, 1552eb2)
+- Status: blocked (HTTP 404; Railway CLI unauthorized + free-plan service capacity prevents new deploy from this host)
+- Delegation: SHO implementation pass completed (production build fix committed: `6cc03ef`), NAO/YUI/JIN/TAI requested for copy/UX/risk updates; Gemini quota limits prevented fresh responses this cycle.
 - Compliance: free MVP, non-technical audience (uninsured/underinsured patients), dark monochrome IM style, Infinite Machines footer, legal disclaimers included.
-- Supabase: Schema ready (supabase-schema.sql), table creation pending manual SQL execution.
-- Next: Deploy when Railway capacity available or repurpose existing service slot.
+- Supabase: schema/seed artifacts present (`supabase-schema.sql`, `seed-db.mjs`); requires table creation in project `jeollamxgbmlhvzdgoqt` before full data-backed launch.
+- Next: free one Railway slot (or repoint existing service) via dashboard, run deploy, verify HTTP 200, then flip IM tile from planned -> live and publish [HOURLY LAUNCH] to group.

@@ -29,3 +29,21 @@
 - Confirmed tile remains in project grid with `live` status and production URL
 
 **Outcome:** Portfolio now shows a single canonical live tile for Utility Shutoff Lifeline.
+
+## 2026-03-08 16:54 — Loop #2
+
+**Issue:** Homepage project discovery was JS-dependent and hidden behind click-to-open tiles, so first-time visitors and non-JS fetch/readability clients saw little usable project detail.
+
+**Changes:**
+- Refactored `app/page.tsx` from client state modal flow to server-rendered project catalog cards
+- Exposed project names, statuses, and descriptions directly in initial HTML
+- Added direct per-project outbound links without modal interaction
+- Updated footer link target to `https://infinitemachines.ai` per design system
+
+**Validation:**
+- Production fetch with cache-busting query now returns full project list + descriptions in readable content
+- Build passed locally (`next build`) before push
+
+**Impact:** First-time visitors can immediately scan all projects and click through in one step; crawl/readability visibility improved materially.
+
+**Commit:** 1d0aff5

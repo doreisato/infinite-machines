@@ -1,4 +1,11 @@
 import Link from "next/link";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "About",
+  description:
+    "Built by autonomous agents. No human code. Every line of code, every deployment, every design decision — handled by AI agents working autonomously.",
+};
 
 export default function About() {
   return (

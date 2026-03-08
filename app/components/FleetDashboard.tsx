@@ -42,30 +42,44 @@ function timeAgo(ts?: string) {
   return `${Math.floor(s / 86400)}d ago`;
 }
 
+function friendlyTask(raw?: string) {
+  if (!raw) return "";
+  if (raw.includes("telegram:direct")) return "Handling Telegram conversation";
+  if (raw.startsWith("agent:")) return "Running agent session";
+  if (raw.length > 52) return `${raw.slice(0, 49)}...`;
+  return raw;
+}
+
+function friendlyEventDesc(raw?: string) {
+  if (!raw) return "—";
+  if (raw.includes("telegram:direct")) return "Agent active in Telegram DM";
+  return raw.replaceAll("agent:", "").replaceAll(":main", "");
+}
+
 function AgentNode({ id, selected, onSelect, pings, large = false }: { id: AgentId; selected: AgentId | null; onSelect: (id: AgentId) => void; pings: Record<string, Ping>; large?: boolean }) {
   const st = getStatus(pings[id]?.last_ping);
   const isLeader = id === "lim";
 
   const borderColor = st === "active"
-    ? (isLeader || large ? "rgba(99,102,241,.62)" : "rgba(34,197,94,.48)")
+    ? (isLeader || large ? "rgba(99,102,241,.7)" : "rgba(34,197,94,.62)")
     : st === "idle"
-      ? "rgba(245,158,11,.45)"
-      : "#141822";
+      ? "rgba(245,158,11,.6)"
+      : "#313a4f";
 
   const boxShadow = st === "active"
     ? (isLeader || large
-      ? "0 0 30px rgba(99,102,241,.26), 0 0 0 1px rgba(99,102,241,.26) inset"
-      : "0 0 24px rgba(34,197,94,.16), 0 0 0 1px rgba(34,197,94,.2) inset")
+      ? "0 0 34px rgba(99,102,241,.34), 0 0 0 1px rgba(99,102,241,.3) inset"
+      : "0 0 26px rgba(34,197,94,.22), 0 0 0 1px rgba(34,197,94,.24) inset")
     : st === "idle"
-      ? "0 0 20px rgba(245,158,11,.13), 0 0 0 1px rgba(245,158,11,.18) inset"
-      : "0 4px 12px rgba(0,0,0,.25)";
+      ? "0 0 22px rgba(245,158,11,.18), 0 0 0 1px rgba(245,158,11,.24) inset"
+      : "0 10px 26px rgba(0,0,0,.38), 0 0 0 1px rgba(102,123,170,.14) inset";
 
   return (
     <button
       className={`node ${isLeader ? "leader-node" : ""} ${large ? "lead-node" : ""} ${st}`}
       onClick={() => onSelect(id)}
       style={{
-        background: "#0d0f14",
+        background: "#171e2b",
         border: `1px solid ${borderColor}`,
         borderRadius: 12,
         boxShadow,
@@ -77,7 +91,7 @@ function AgentNode({ id, selected, onSelect, pings, large = false }: { id: Agent
       <div className="name">{agents[id].name}</div>
       <div className="role">{agents[id].role}</div>
       <div><span className="status-dot" /> <span className="status-text">{st === "active" ? timeAgo(pings[id]?.last_ping) : st}</span></div>
-      <div className="task">{pings[id]?.current_task || ""}</div>
+      <div className="task">{friendlyTask(pings[id]?.current_task)}</div>
     </button>
   );
 }
@@ -223,7 +237,7 @@ export default function FleetDashboard() {
                     <div key={ev.id} className="event-row">
                       <div className="event-time">{timeAgo(ev.created_at)}</div>
                       <div className="event-type">{ev.event_type.replace("_", " ")}</div>
-                      <div className="event-desc">{ev.description || "—"}</div>
+                      <div className="event-desc">{friendlyEventDesc(ev.description)}</div>
                     </div>
                   ))
                 )}
@@ -235,15 +249,15 @@ export default function FleetDashboard() {
 
       <style jsx global>{`
         .fleet-wrap { width: 100%; max-width: 980px; margin: 0 auto; }
-        .tree { display:flex; flex-direction:column; align-items:center; gap:34px; }
+        .tree { display:flex; flex-direction:column; align-items:center; gap:40px; }
         .leader-row { display:flex; justify-content:center; width:100%; }
-        .lead-row { display:grid; grid-template-columns:repeat(2, minmax(220px, 1fr)); gap:26px; width:100%; max-width:560px; }
-        .connector.v { width:2px; height:30px; background:linear-gradient(to bottom,#333,#1a1a1a); }
-        .connector.h { width:78%; max-width:760px; height:2px; background:linear-gradient(to right,transparent,#333 10%,#333 90%,transparent); }
-        .bottom-wrap { width:100%; display:grid; grid-template-columns:1fr 1fr; gap:26px; }
-        .team-col { display:flex; flex-direction:column; align-items:center; gap:12px; }
-        .team-connector { width:2px; height:16px; background:linear-gradient(to bottom,#333,#1a1a1a); }
-        .team-grid { width:100%; display:grid; grid-template-columns:repeat(3, minmax(130px, 1fr)); gap:14px; }
+        .lead-row { display:grid; grid-template-columns:repeat(2, minmax(230px, 1fr)); gap:34px; width:100%; max-width:620px; }
+        .connector.v { width:2px; height:34px; background:linear-gradient(to bottom,#454b5c,#1f2431); }
+        .connector.h { width:82%; max-width:820px; height:2px; background:linear-gradient(to right,transparent,#454b5c 10%,#454b5c 90%,transparent); }
+        .bottom-wrap { width:100%; display:grid; grid-template-columns:1fr 1fr; gap:32px; }
+        .team-col { display:flex; flex-direction:column; align-items:center; gap:14px; }
+        .team-connector { width:2px; height:18px; background:linear-gradient(to bottom,#454b5c,#1f2431); }
+        .team-grid { width:100%; display:grid; grid-template-columns:repeat(3, minmax(140px, 1fr)); gap:16px; }
 
         .node { background:#0d0f14; border:1px solid #171a22; border-radius:12px; padding:20px 16px; text-align:center; position:relative; transition:all .3s ease; cursor:pointer; min-height:148px; box-shadow:0 6px 18px rgba(0,0,0,0.35); }
         .node:hover { transform:translateY(-1px); border-color:#232838; }
@@ -257,13 +271,13 @@ export default function FleetDashboard() {
         .kanji { font-size:48px; font-weight:300; margin-bottom:8px; color:#f4f5f8; }
         .kanji.small { font-size:32px; }
         .name { color:#f7f7fa; font-weight:600; font-size:15px; }
-        .role { color:#5f6472; font-size:11px; letter-spacing:1px; text-transform:uppercase; margin-bottom:8px; }
-        .status-dot { display:inline-block; width:6px; height:6px; border-radius:50%; margin-right:6px; background:#2c3242; }
-        .active .status-dot { background:#22c55e; box-shadow:0 0 7px rgba(34,197,94,.6); }
-        .leader-node.active .status-dot, .lead-node.active .status-dot { background:#818cf8; box-shadow:0 0 7px rgba(129,140,248,.62); }
+        .role { color:#8a93a8; font-size:11px; letter-spacing:1px; text-transform:uppercase; margin-bottom:8px; }
+        .status-dot { display:inline-block; width:6px; height:6px; border-radius:50%; margin-right:6px; background:#44506a; }
+        .active .status-dot { background:#22c55e; box-shadow:0 0 8px rgba(34,197,94,.68); }
+        .leader-node.active .status-dot, .lead-node.active .status-dot { background:#818cf8; box-shadow:0 0 8px rgba(129,140,248,.68); }
         .idle .status-dot { background:#f59e0b; }
-        .status-text { font-size:11px; color:#5a6070; }
-        .task { margin-top:8px; font-size:11px; color:#616775; line-height:1.35; max-height:30px; overflow:hidden; }
+        .status-text { font-size:11px; color:#b0b9cf; }
+        .task { margin-top:8px; font-size:11px; color:#a2aec7; line-height:1.35; max-height:30px; overflow:hidden; }
 
         .overlay { display:none; position:fixed; inset:0; background:rgba(0,0,0,.55); z-index:90; }
         .overlay.open { display:block; }

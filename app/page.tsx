@@ -35,7 +35,7 @@ export default function Home() {
             Infinite Machines
           </h1>
           <p className="text-neutral-500 text-lg md:text-xl tracking-wide">
-            Systems that build for those who need it most
+            Systems that ship what matters
           </p>
         </div>
 

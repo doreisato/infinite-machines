@@ -20,3 +20,12 @@
 - Portfolio tile already present and marked `live` with production URL in `app/page.tsx`
 
 **Outcome:** Hourly winner is publicly reachable and represented in Infinite Machines project grid.
+
+## 2026-03-08 15:26 — Hourly Launch: Utility Shutoff Lifeline (Live Finalization)
+
+**Checks:**
+- Verified Railway URL returns HTTP 200: `https://utility-shutoff-lifeline-production.up.railway.app`
+- Removed duplicate Utility Shutoff Lifeline tile entry in `app/page.tsx` (resolved id collision + thread drift risk)
+- Confirmed tile remains in project grid with `live` status and production URL
+
+**Outcome:** Portfolio now shows a single canonical live tile for Utility Shutoff Lifeline.

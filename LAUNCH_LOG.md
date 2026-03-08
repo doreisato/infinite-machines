@@ -15,9 +15,9 @@
 - Status: live and reachable (HTTP 200); tile updated to live URL.
 - Compliance: free MVP, non-technical audience focus, dark monochrome IM style, Infinite Machines footer.
 
-## 2026-03-08 — FeeShield
-- Product: FeeShield
-- UVP: Detects common bank/utility late-fee risk and gives a simple due-date action plan.
-- URL: https://feeshield-production.up.railway.app
-- Status: deferred pending Railway capacity (currently 404).
+## 2026-03-08 — WageShield
+- Product: WageShield
+- UVP: Instant overtime and wage calculator for hourly workers. Deterministic math, no signup.
+- URL: https://roastmysite-production-a490.up.railway.app (repurposed Railway service from roastmysite)
+- Status: live (HTTP 200 verified)
 - Compliance: free MVP, non-technical audience focus, dark monochrome IM style, Infinite Machines footer.

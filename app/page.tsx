@@ -24,17 +24,9 @@ const projects: Project[] = [
     id: "wageshield",
     name: "WageShield",
     description:
-      "Instant wage theft calculator for hourly workers — proves paycheck shortages with deterministic math.",
-    url: "https://wageshield-production.up.railway.app",
-    status: "planned",
-  },
-  {
-    id: "feeshield",
-    name: "FeeShield",
-    description:
-      "Detects common bank/utility late-fee risks and provides a simple due-date action plan.",
-    url: "https://feeshield-production.up.railway.app",
-    status: "planned",
+      "Instant overtime and wage calculator for hourly workers. Deterministic math, no signup, no data stored.",
+    url: "https://roastmysite-production-a490.up.railway.app",
+    status: "live",
   },
 ];
 

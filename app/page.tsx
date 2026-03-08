@@ -38,6 +38,14 @@ const projects: Project[] = [
     status: "live",
   },
   {
+    id: "utility-shutoff-lifeline",
+    name: "Utility Shutoff Lifeline",
+    description:
+      "See your utility shutoff deadline, protections, and emergency action links in one screen before disconnection.",
+    url: "https://utility-shutoff-lifeline-production.up.railway.app",
+    status: "live",
+  },
+  {
     id: "housingalert",
     name: "HousingAlert",
     description:

@@ -31,3 +31,11 @@
 - Compliance: free MVP, non-technical audience (uninsured/underinsured patients), dark monochrome IM style, Infinite Machines footer, legal disclaimers included.
 - Supabase: schema/seed artifacts present (`supabase-schema.sql`, `seed-db.mjs`); requires table creation in project `jeollamxgbmlhvzdgoqt` before full data-backed launch.
 - Next: free one Railway slot (or repoint existing service) via dashboard, run deploy, verify HTTP 200, then flip IM tile from planned -> live and publish [HOURLY LAUNCH] to group.
+
+## 2026-03-08 12:22 — Utility Shutoff Lifeline
+- Product: Utility Shutoff Lifeline
+- UVP: See your utility shutoff deadline, protections, and emergency action links in one screen before disconnection.
+- URL: https://utility-shutoff-lifeline-production.up.railway.app
+- Status: deploying (service created, public domain generated with target port 8080; awaiting first successful deployment/HTTP 200)
+- Compliance: free MVP, non-technical public utility focus, dark monochrome IM style, no emoji, Infinite Machines footer, legal-safe disclaimer included.
+- Notes: Repo pushed (`doreisato/utility-shutoff-lifeline`), IM tile updated to `live` target URL; final healthcheck pending active deployment.

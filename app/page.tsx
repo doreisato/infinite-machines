@@ -13,6 +13,14 @@ interface Project {
 
 const projects: Project[] = [
   {
+    id: "fastpath-benefits-screener",
+    name: "FastPath Benefits Screener",
+    description:
+      "Free one-minute pre-screen for SNAP, Medicaid, WIC, and LIHEAP with plain-language next steps.",
+    url: "https://fastpath-benefits-screener-production.up.railway.app",
+    status: "building",
+  },
+  {
     id: 'feeshield',
     name: 'FeeShield',
     description: 'Detects common bank/utility late-fee risks and provides a simple due-date action plan.',

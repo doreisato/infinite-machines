@@ -13,6 +13,13 @@ interface Project {
 
 const projects: Project[] = [
   {
+    id: 'feeshield',
+    name: 'FeeShield',
+    description: 'Detects common bank/utility late-fee risks and provides a simple due-date action plan.',
+    url: 'https://feeshield-production.up.railway.app',
+    status: 'live',
+  },
+  {
     id: "benefits-navigator",
     name: "Benefits Navigator",
     description:

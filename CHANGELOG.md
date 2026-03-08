@@ -56,3 +56,12 @@
 **Impact:** First-time visitors can immediately scan all projects and click through in one step; crawl/readability visibility improved materially.
 
 **Commit:** 1d0aff5
+
+## 2026-03-08 18:27 — Hourly Launch: Calm Minute tile update
+
+**Changes:**
+- Replaced WageShield tile with Calm Minute in `app/page.tsx`
+- Updated name, UVP, and kept Railway URL `https://roastmysite-production-a490.up.railway.app`
+- Set status to `live` after HTTP 200 reachability check
+
+**Outcome:** Portfolio now reflects a happiness-first product category (calm/daily delight) on the main project grid.

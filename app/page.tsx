@@ -19,10 +19,10 @@ const projects: Project[] = [
     status: "live",
   },
   {
-    id: "wageshield",
-    name: "WageShield",
+    id: "calm-minute",
+    name: "Calm Minute",
     description:
-      "Find out if your paycheck is missing money. Instant overtime and wage calculator for hourly workers.",
+      "Free one-minute reset for calm, clarity, and daily delight. Guided breathing, grounding, and tiny joy actions.",
     url: "https://roastmysite-production-a490.up.railway.app",
     status: "live",
   },

@@ -30,6 +30,15 @@
 
 **Outcome:** Portfolio now shows a single canonical live tile for Utility Shutoff Lifeline.
 
+## 2026-03-08 17:25 — Hourly Launch: Benefits Deadline Radar (Live Finalization)
+
+**Checks:**
+- Verified Railway URL returns HTTP 200: `https://benefits-deadline-radar-production.up.railway.app`
+- Confirmed Infinite Machines tile is present with `live` status and correct production URL
+- Updated launch log status from `deploying` to `live`
+
+**Outcome:** Latest compliant hourly winner is live and correctly represented in portfolio.
+
 ## 2026-03-08 16:54 — Loop #2
 
 **Issue:** Homepage project discovery was JS-dependent and hidden behind click-to-open tiles, so first-time visitors and non-JS fetch/readability clients saw little usable project detail.

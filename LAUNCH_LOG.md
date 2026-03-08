@@ -64,7 +64,7 @@
 - Product: Benefits Deadline Radar
 - UVP: Track SNAP, Medicaid, WIC, and unemployment renewal deadlines before your coverage lapses.
 - URL: https://benefits-deadline-radar-production.up.railway.app
-- Status: deploying (service created on Railway with target port 8080)
+- Status: live (HTTP 200 verified)
 - Compliance: free MVP, non-technical audience, dark monochrome IM style, no emoji, legal-safe disclaimer on first screen, Infinite Machines footer.
 
 ## 2026-03-08 15:26 — Utility Shutoff Lifeline (Launch Confirmed)

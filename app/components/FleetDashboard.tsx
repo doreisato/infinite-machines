@@ -208,7 +208,7 @@ export default function FleetDashboard() {
         )}
       </aside>
 
-      <style jsx>{`
+      <style jsx global>{`
         .fleet-wrap { width: 100%; max-width: 980px; margin: 0 auto; }
         .tree { display:flex; flex-direction:column; align-items:center; gap:34px; }
         .leader-row { display:flex; justify-content:center; width:100%; }

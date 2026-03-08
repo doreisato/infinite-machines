@@ -28,6 +28,14 @@ const projects: Project[] = [
     url: "https://roastmysite-production-a490.up.railway.app",
     status: "live",
   },
+  {
+    id: "housingalert",
+    name: "HousingAlert",
+    description:
+      "Email alerts when affordable housing waitlists open in your county. Never miss Section 8 or public housing opportunities.",
+    url: "https://housingalert-production.up.railway.app",
+    status: "planned",
+  },
 ];
 
 export default function Home() {

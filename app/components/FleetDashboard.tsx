@@ -64,30 +64,26 @@ function AgentNode({ id, selected, onSelect, pings, large = false }: { id: Agent
   const isLeader = id === "lim";
 
   const borderColor = st === "active"
-    ? (isLeader || large ? "rgba(99,102,241,.7)" : "rgba(34,197,94,.62)")
+    ? "rgba(255,255,255,.42)"
     : st === "idle"
-      ? "rgba(245,158,11,.6)"
-      : "#313a4f";
+      ? "rgba(255,255,255,.28)"
+      : "rgba(255,255,255,.16)";
 
   const boxShadow = st === "active"
-    ? (isLeader || large
-      ? "0 0 34px rgba(99,102,241,.34), 0 0 0 1px rgba(99,102,241,.3) inset"
-      : "0 0 26px rgba(34,197,94,.22), 0 0 0 1px rgba(34,197,94,.24) inset")
+    ? "0 0 22px rgba(255,255,255,.12), 0 0 0 1px rgba(255,255,255,.16) inset"
     : st === "idle"
-      ? "0 0 22px rgba(245,158,11,.18), 0 0 0 1px rgba(245,158,11,.24) inset"
-      : "0 10px 26px rgba(0,0,0,.38), 0 0 0 1px rgba(102,123,170,.14) inset";
+      ? "0 0 14px rgba(255,255,255,.08), 0 0 0 1px rgba(255,255,255,.12) inset"
+      : "0 8px 18px rgba(0,0,0,.34), 0 0 0 1px rgba(255,255,255,.08) inset";
 
   return (
     <button
       className={`node ${isLeader ? "leader-node" : ""} ${large ? "lead-node" : ""} ${st}`}
       onClick={() => onSelect(id)}
       style={{
-        background: "#171e2b",
+        background: "#111113",
         border: `1px solid ${borderColor}`,
         borderRadius: 12,
         boxShadow,
-        padding: isLeader ? "24px 32px" : "20px 16px",
-        minHeight: 148,
       }}
     >
       <div className={`kanji ${isLeader ? "" : "small"}`}>{agents[id].kanji}</div>
@@ -252,20 +248,20 @@ export default function FleetDashboard() {
 
       <style jsx global>{`
         .fleet-wrap { width: 100%; max-width: 980px; margin: 0 auto; }
-        .tree { display:flex; flex-direction:column; align-items:center; gap:40px; }
+        .tree { display:flex; flex-direction:column; align-items:center; gap:30px; }
         .leader-row { display:flex; justify-content:center; width:100%; }
-        .lead-row { display:grid; grid-template-columns:repeat(2, minmax(230px, 1fr)); gap:34px; width:100%; max-width:620px; }
-        .connector.v { width:2px; height:34px; background:linear-gradient(to bottom,#454b5c,#1f2431); }
-        .connector.h { width:82%; max-width:820px; height:2px; background:linear-gradient(to right,transparent,#454b5c 10%,#454b5c 90%,transparent); }
-        .bottom-wrap { width:100%; display:grid; grid-template-columns:1fr 1fr; gap:32px; }
-        .team-col { display:flex; flex-direction:column; align-items:center; gap:14px; }
-        .team-connector { width:2px; height:18px; background:linear-gradient(to bottom,#454b5c,#1f2431); }
-        .team-grid { width:100%; display:grid; grid-template-columns:repeat(3, minmax(140px, 1fr)); gap:16px; }
+        .lead-row { display:grid; grid-template-columns:repeat(2, minmax(160px, 1fr)); gap:22px; width:100%; max-width:520px; }
+        .connector.v { width:2px; height:24px; background:linear-gradient(to bottom,#3a3a3a,#1a1a1a); }
+        .connector.h { width:82%; max-width:820px; height:2px; background:linear-gradient(to right,transparent,#3a3a3a 10%,#3a3a3a 90%,transparent); }
+        .bottom-wrap { width:100%; display:grid; grid-template-columns:1fr 1fr; gap:22px; }
+        .team-col { display:flex; flex-direction:column; align-items:center; gap:12px; }
+        .team-connector { width:2px; height:14px; background:linear-gradient(to bottom,#3a3a3a,#1a1a1a); }
+        .team-grid { width:100%; display:grid; grid-template-columns:repeat(3, minmax(100px, 1fr)); gap:12px; }
 
-        .node { background:#0d0f14; border:1px solid #171a22; border-radius:12px; padding:20px 16px; text-align:center; position:relative; transition:all .3s ease; cursor:pointer; min-height:148px; box-shadow:0 6px 18px rgba(0,0,0,0.35); }
-        .node:hover { transform:translateY(-1px); border-color:#232838; }
-        .leader-node { padding:24px 32px; min-width:220px; }
-        .lead-node { min-height:148px; }
+        .node { background:#111113; border:1px solid #222; border-radius:12px; text-align:center; position:relative; transition:all .22s ease; cursor:pointer; width:100%; aspect-ratio:1/1; padding:12px; display:flex; flex-direction:column; align-items:center; justify-content:center; }
+        .node:hover { transform:translateY(-1px); }
+        .leader-node { max-width:220px; }
+        .lead-node { max-width:190px; justify-self:center; }
         .node.active { border-color:rgba(34,197,94,.48); box-shadow:0 0 24px rgba(34,197,94,.16), 0 0 0 1px rgba(34,197,94,.2) inset; }
         .leader-node.active { border-color:rgba(99,102,241,.62); box-shadow:0 0 30px rgba(99,102,241,.26), 0 0 0 1px rgba(99,102,241,.26) inset; }
         .lead-node.active { border-color:rgba(99,102,241,.5); box-shadow:0 0 24px rgba(99,102,241,.18), 0 0 0 1px rgba(99,102,241,.2) inset; }
@@ -274,13 +270,13 @@ export default function FleetDashboard() {
         .kanji { font-size:48px; font-weight:300; margin-bottom:8px; color:#f4f5f8; }
         .kanji.small { font-size:32px; }
         .name { color:#f7f7fa; font-weight:600; font-size:15px; }
-        .role { color:#8a93a8; font-size:11px; letter-spacing:1px; text-transform:uppercase; margin-bottom:8px; }
-        .status-dot { display:inline-block; width:6px; height:6px; border-radius:50%; margin-right:6px; background:#44506a; }
-        .active .status-dot { background:#22c55e; box-shadow:0 0 8px rgba(34,197,94,.68); }
-        .leader-node.active .status-dot, .lead-node.active .status-dot { background:#818cf8; box-shadow:0 0 8px rgba(129,140,248,.68); }
-        .idle .status-dot { background:#f59e0b; }
-        .status-text { font-size:11px; color:#b0b9cf; }
-        .task { margin-top:8px; font-size:11px; color:#a2aec7; line-height:1.35; max-height:30px; overflow:hidden; }
+        .role { color:#7f7f84; font-size:11px; letter-spacing:1px; text-transform:uppercase; margin-bottom:8px; }
+        .status-dot { display:inline-block; width:6px; height:6px; border-radius:50%; margin-right:6px; background:#5a5a5f; }
+        .active .status-dot { background:#f3f3f4; box-shadow:0 0 8px rgba(255,255,255,.45); }
+        .leader-node.active .status-dot, .lead-node.active .status-dot { background:#f3f3f4; box-shadow:0 0 8px rgba(255,255,255,.45); }
+        .idle .status-dot { background:#bdbdc2; }
+        .status-text { font-size:11px; color:#b9b9bf; }
+        .task { margin-top:8px; font-size:11px; color:#a5a5ab; line-height:1.35; max-height:30px; overflow:hidden; }
 
         .overlay { display:none; position:fixed; inset:0; background:rgba(0,0,0,.55); z-index:90; }
         .overlay.open { display:block; }
@@ -308,12 +304,23 @@ export default function FleetDashboard() {
         .event-type { font-size:10px; color:#9ca3af; text-transform:uppercase; letter-spacing:1px; margin-bottom:2px; }
         .event-desc { font-size:12px; color:#d1d5db; line-height:1.3; }
 
-        @media (max-width: 980px) {
+        @media (max-width: 820px) {
           .bottom-wrap { grid-template-columns:1fr; }
         }
         @media (max-width: 780px) {
-          .lead-row { grid-template-columns:1fr; max-width:280px; }
-          .team-grid { grid-template-columns:repeat(2, minmax(120px,1fr)); }
+          .tree { gap:20px; }
+          .lead-row { grid-template-columns:repeat(2, minmax(130px, 1fr)); gap:12px; max-width:320px; }
+          .team-grid { grid-template-columns:repeat(3, minmax(86px,1fr)); gap:8px; }
+          .leader-node { max-width:170px; }
+          .lead-node { max-width:150px; }
+          .node { padding:8px; }
+          .kanji { font-size:34px; }
+          .kanji.small { font-size:24px; }
+          .name { font-size:12px; }
+          .role, .status-text, .task { font-size:10px; }
+        }
+        @media (max-width: 520px) {
+          .lead-row { grid-template-columns:1fr; max-width:170px; }
         }
       `}</style>
     </>

@@ -210,29 +210,29 @@ export default function FleetDashboard() {
 
       <style jsx>{`
         .fleet-wrap { width: 100%; max-width: 980px; margin: 0 auto; }
-        .tree { display:flex; flex-direction:column; align-items:center; gap:18px; }
+        .tree { display:flex; flex-direction:column; align-items:center; gap:34px; }
         .leader-row { display:flex; justify-content:center; width:100%; }
-        .lead-row { display:grid; grid-template-columns:repeat(2, minmax(180px, 1fr)); gap:24px; width:100%; max-width:520px; }
-        .connector.v { width:2px; height:24px; background:linear-gradient(to bottom,#333,#1a1a1a); }
-        .connector.h { width:70%; max-width:700px; height:2px; background:linear-gradient(to right,transparent,#333 10%,#333 90%,transparent); }
-        .bottom-wrap { width:100%; display:grid; grid-template-columns:1fr 1fr; gap:24px; }
-        .team-col { display:flex; flex-direction:column; align-items:center; gap:10px; }
-        .team-connector { width:2px; height:14px; background:linear-gradient(to bottom,#333,#1a1a1a); }
-        .team-grid { width:100%; display:grid; grid-template-columns:repeat(3, minmax(120px, 1fr)); gap:12px; }
+        .lead-row { display:grid; grid-template-columns:repeat(2, minmax(220px, 1fr)); gap:26px; width:100%; max-width:560px; }
+        .connector.v { width:2px; height:30px; background:linear-gradient(to bottom,#333,#1a1a1a); }
+        .connector.h { width:78%; max-width:760px; height:2px; background:linear-gradient(to right,transparent,#333 10%,#333 90%,transparent); }
+        .bottom-wrap { width:100%; display:grid; grid-template-columns:1fr 1fr; gap:26px; }
+        .team-col { display:flex; flex-direction:column; align-items:center; gap:12px; }
+        .team-connector { width:2px; height:16px; background:linear-gradient(to bottom,#333,#1a1a1a); }
+        .team-grid { width:100%; display:grid; grid-template-columns:repeat(3, minmax(130px, 1fr)); gap:14px; }
 
-        .node { background:#111113; border:1px solid #222; border-radius:12px; padding:16px 12px; text-align:center; position:relative; transition:all .25s ease; cursor:pointer; min-height:132px; }
+        .node { background:#111113; border:1px solid #222; border-radius:12px; padding:20px 16px; text-align:center; position:relative; transition:all .5s ease; cursor:pointer; min-height:148px; }
         .node:hover { transform:translateY(-2px); }
-        .leader-node { padding:20px 24px; min-width:220px; }
-        .lead-node { min-height:140px; }
+        .leader-node { padding:24px 32px; min-width:220px; }
+        .lead-node { min-height:148px; }
         .node.active { border-color:rgba(34,197,94,.25); box-shadow:0 0 20px rgba(34,197,94,.12); }
         .leader-node.active { border-color:rgba(99,102,241,.35); box-shadow:0 0 30px rgba(99,102,241,.2); }
         .lead-node.active { border-color:rgba(99,102,241,.35); box-shadow:0 0 24px rgba(99,102,241,.14); }
         .node.idle { border-color:rgba(245,158,11,.25); box-shadow:0 0 16px rgba(245,158,11,.09); }
         .node.offline { opacity:.5; border-color:#1a1a1a; }
-        .kanji { font-size:48px; font-weight:300; margin-bottom:6px; }
-        .kanji.small { font-size:30px; }
-        .name { color:#fff; font-weight:600; font-size:14px; }
-        .role { color:#666; font-size:10px; letter-spacing:1px; text-transform:uppercase; margin-bottom:6px; }
+        .kanji { font-size:48px; font-weight:300; margin-bottom:8px; }
+        .kanji.small { font-size:32px; }
+        .name { color:#fff; font-weight:600; font-size:15px; }
+        .role { color:#666; font-size:11px; letter-spacing:1px; text-transform:uppercase; margin-bottom:8px; }
         .status-dot { display:inline-block; width:6px; height:6px; border-radius:50%; margin-right:6px; background:#333; }
         .active .status-dot { background:#22c55e; box-shadow:0 0 6px rgba(34,197,94,.55); }
         .leader-node.active .status-dot, .lead-node.active .status-dot { background:#818cf8; box-shadow:0 0 6px rgba(129,140,248,.55); }

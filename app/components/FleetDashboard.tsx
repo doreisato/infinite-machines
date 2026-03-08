@@ -220,15 +220,15 @@ export default function FleetDashboard() {
         .team-connector { width:2px; height:16px; background:linear-gradient(to bottom,#333,#1a1a1a); }
         .team-grid { width:100%; display:grid; grid-template-columns:repeat(3, minmax(130px, 1fr)); gap:14px; }
 
-        .node { background:#111113; border:1px solid #222; border-radius:12px; padding:20px 16px; text-align:center; position:relative; transition:all .5s ease; cursor:pointer; min-height:148px; }
-        .node:hover { transform:translateY(-2px); }
+        .node { background:#151519; border:1px solid #2f2f35; border-radius:12px; padding:20px 16px; text-align:center; position:relative; transition:all .35s ease; cursor:pointer; min-height:148px; box-shadow:0 0 0 1px rgba(255,255,255,0.02) inset, 0 8px 22px rgba(0,0,0,0.35); }
+        .node:hover { transform:translateY(-2px); border-color:#43434c; box-shadow:0 0 0 1px rgba(255,255,255,0.04) inset, 0 12px 28px rgba(0,0,0,0.45); }
         .leader-node { padding:24px 32px; min-width:220px; }
         .lead-node { min-height:148px; }
-        .node.active { border-color:rgba(34,197,94,.25); box-shadow:0 0 20px rgba(34,197,94,.12); }
-        .leader-node.active { border-color:rgba(99,102,241,.35); box-shadow:0 0 30px rgba(99,102,241,.2); }
-        .lead-node.active { border-color:rgba(99,102,241,.35); box-shadow:0 0 24px rgba(99,102,241,.14); }
-        .node.idle { border-color:rgba(245,158,11,.25); box-shadow:0 0 16px rgba(245,158,11,.09); }
-        .node.offline { opacity:.5; border-color:#1a1a1a; }
+        .node.active { border-color:rgba(34,197,94,.4); box-shadow:0 0 0 1px rgba(34,197,94,0.18) inset, 0 0 24px rgba(34,197,94,.15); }
+        .leader-node.active { border-color:rgba(99,102,241,.55); box-shadow:0 0 0 1px rgba(99,102,241,0.22) inset, 0 0 30px rgba(99,102,241,.22); }
+        .lead-node.active { border-color:rgba(99,102,241,.45); box-shadow:0 0 0 1px rgba(99,102,241,0.18) inset, 0 0 24px rgba(99,102,241,.16); }
+        .node.idle { border-color:rgba(245,158,11,.38); box-shadow:0 0 0 1px rgba(245,158,11,0.14) inset, 0 0 18px rgba(245,158,11,.12); }
+        .node.offline { opacity:.7; border-color:#25252a; }
         .kanji { font-size:48px; font-weight:300; margin-bottom:8px; }
         .kanji.small { font-size:32px; }
         .name { color:#fff; font-weight:600; font-size:15px; }

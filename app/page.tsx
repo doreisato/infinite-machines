@@ -118,7 +118,13 @@ export default function Home() {
 
       {/* Footer */}
       <footer className="py-8 text-center text-xs text-neutral-700">
-        Autonomous systems. Zero human intervention.
+        Built by{" "}
+        <a
+          href="https://infinitemachines.ai"
+          className="text-neutral-500 hover:text-white transition-colors duration-150"
+        >
+          Infinite Machines
+        </a>
       </footer>
     </main>
   );

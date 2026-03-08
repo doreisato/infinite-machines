@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 
 interface Project {
   id: string;
@@ -28,6 +29,16 @@ export default function Home() {
 
   return (
     <main className="min-h-screen bg-[#0A0A0A] flex flex-col">
+      {/* Navigation */}
+      <nav className="fixed top-0 right-0 p-6 z-50">
+        <a
+          href="/about"
+          className="text-xs text-neutral-500 hover:text-white transition-colors duration-150 uppercase tracking-widest"
+        >
+          About
+        </a>
+      </nav>
+
       {/* Header */}
       <div className="flex-1 flex flex-col items-center justify-center px-6">
         <div className="text-center mb-20">

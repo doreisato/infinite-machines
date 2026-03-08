@@ -44,10 +44,13 @@ function timeAgo(ts?: string) {
 
 function friendlyTask(raw?: string) {
   if (!raw) return "";
-  if (raw.includes("telegram:direct")) return "Handling Telegram conversation";
-  if (raw.startsWith("agent:")) return "Running agent session";
-  if (raw.length > 52) return `${raw.slice(0, 49)}...`;
-  return raw;
+  const s = raw.trim();
+  if (!s) return "";
+  if (s.includes("<media:")) return "Handling inbound media";
+  if (s.includes("telegram:direct")) return "Handling Telegram conversation";
+  if (s.startsWith("agent:")) return "Running agent session";
+  if (s.length > 52) return `${s.slice(0, 49)}...`;
+  return s;
 }
 
 function friendlyEventDesc(raw?: string) {

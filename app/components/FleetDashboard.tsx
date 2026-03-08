@@ -46,8 +46,33 @@ function AgentNode({ id, selected, onSelect, pings, large = false }: { id: Agent
   const st = getStatus(pings[id]?.last_ping);
   const isLeader = id === "lim";
 
+  const borderColor = st === "active"
+    ? (isLeader || large ? "rgba(99,102,241,.62)" : "rgba(34,197,94,.48)")
+    : st === "idle"
+      ? "rgba(245,158,11,.45)"
+      : "#141822";
+
+  const boxShadow = st === "active"
+    ? (isLeader || large
+      ? "0 0 30px rgba(99,102,241,.26), 0 0 0 1px rgba(99,102,241,.26) inset"
+      : "0 0 24px rgba(34,197,94,.16), 0 0 0 1px rgba(34,197,94,.2) inset")
+    : st === "idle"
+      ? "0 0 20px rgba(245,158,11,.13), 0 0 0 1px rgba(245,158,11,.18) inset"
+      : "0 4px 12px rgba(0,0,0,.25)";
+
   return (
-    <button className={`node ${isLeader ? "leader-node" : ""} ${large ? "lead-node" : ""} ${st}`} onClick={() => onSelect(id)}>
+    <button
+      className={`node ${isLeader ? "leader-node" : ""} ${large ? "lead-node" : ""} ${st}`}
+      onClick={() => onSelect(id)}
+      style={{
+        background: "#0d0f14",
+        border: `1px solid ${borderColor}`,
+        borderRadius: 12,
+        boxShadow,
+        padding: isLeader ? "24px 32px" : "20px 16px",
+        minHeight: 148,
+      }}
+    >
       <div className={`kanji ${isLeader ? "" : "small"}`}>{agents[id].kanji}</div>
       <div className="name">{agents[id].name}</div>
       <div className="role">{agents[id].role}</div>

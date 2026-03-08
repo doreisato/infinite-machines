@@ -9,16 +9,17 @@ const supabase = createClient(
 );
 
 type Ping = { agent_id: string; status: string; current_task: string; last_ping: string };
+type AgentEvent = { id: number; agent_id: string; event_type: string; description: string; session_key: string; created_at: string };
 
 const agents = {
-  lim: { kanji: "臨", name: "LIM", role: "Architect", model: "claude-opus-4-6", fullName: "LIM (臨 presence)", theme: "Fleet orchestration & system design", tools: "All", subagents: "All agents", created: "2026-02-20" },
-  sho: { kanji: "翔", name: "SHO", role: "DevOps", model: "gemini-3.1-pro", fullName: "SHO (翔 soar)", theme: "Deploy, infrastructure, CI/CD", tools: "All", subagents: "None", created: "2026-03-04" },
-  nao: { kanji: "直", name: "NAO", role: "Content", model: "gemini-3.1-pro", fullName: "NAO (直 direct)", theme: "Copy & content", tools: "All", subagents: "None", created: "2026-03-04" },
-  tai: { kanji: "泰", name: "TAI", role: "Research", model: "gemini-3.1-pro", fullName: "TAI (泰 great)", theme: "Web intelligence & deep research", tools: "All", subagents: "None", created: "2026-03-04" },
-  yui: { kanji: "結", name: "YUI", role: "UX", model: "gemini-3.1-pro", fullName: "YUI (結 connect)", theme: "Performance coach & UX", tools: "All", subagents: "None", created: "2026-03-04" },
-  jin: { kanji: "刃", name: "JIN", role: "Finance", model: "gemini-3.1-pro", fullName: "JIN (刃 blade)", theme: "Trading & finance", tools: "All", subagents: "None", created: "2026-03-04" },
-  kou: { kanji: "光", name: "KOU", role: "Growth", model: "gemini-3.1-pro", fullName: "KOU (光 light)", theme: "Marketing, content, distribution", tools: "All", subagents: "NAO, TAI, YUI", created: "2026-03-05" },
-  zen: { kanji: "禅", name: "ZEN", role: "Strategy", model: "gemini-3.1-pro", fullName: "ZEN (禅 clarity)", theme: "Code architecture, review, delegation", tools: "All", subagents: "SHO, RIN, JIN", created: "2026-03-05" },
+  lim: { kanji: "臨", name: "LIM", role: "Architect", model: "claude-opus-4-6", fullName: "LIM (臨 presence)", theme: "Fleet orchestration & system design", tools: "All + orchestration", subagents: "All agents", created: "2026-02-20" },
+  sho: { kanji: "翔", name: "SHO", role: "DevOps", model: "gemini-3.1-pro", fullName: "SHO (翔 soar)", theme: "Deploy, infrastructure, CI/CD", tools: "Browser, exec, git, Railway", subagents: "None", created: "2026-03-04" },
+  nao: { kanji: "直", name: "NAO", role: "Content", model: "gemini-3.1-pro", fullName: "NAO (直 direct)", theme: "Copy & content", tools: "Web, docs, messaging", subagents: "None", created: "2026-03-04" },
+  tai: { kanji: "泰", name: "TAI", role: "Research", model: "gemini-3.1-pro", fullName: "TAI (泰 great)", theme: "Web intelligence & deep research", tools: "web_search, fetch, analysis", subagents: "None", created: "2026-03-04" },
+  yui: { kanji: "結", name: "YUI", role: "UX", model: "gemini-3.1-pro", fullName: "YUI (結 connect)", theme: "Performance coach & UX", tools: "browser, UX review", subagents: "None", created: "2026-03-04" },
+  jin: { kanji: "刃", name: "JIN", role: "Finance", model: "gemini-3.1-pro", fullName: "JIN (刃 blade)", theme: "Trading & finance", tools: "analysis, sheets, web", subagents: "None", created: "2026-03-04" },
+  kou: { kanji: "光", name: "KOU", role: "Growth", model: "gemini-3.1-pro", fullName: "KOU (光 light)", theme: "Marketing, content, distribution", tools: "growth research, messaging", subagents: "NAO, TAI, YUI", created: "2026-03-05" },
+  zen: { kanji: "禅", name: "ZEN", role: "Strategy", model: "gemini-3.1-pro", fullName: "ZEN (禅 clarity)", theme: "Code architecture, review, delegation", tools: "planning, review, delegation", subagents: "SHO, RIN, JIN", created: "2026-03-05" },
   rin: { kanji: "凛", name: "RIN", role: "QA", model: "gemini-3.1-pro", fullName: "RIN (凛 disciplined)", theme: "Browser automation & QA", tools: "All (no spawn)", subagents: "None", created: "2026-03-04" },
 } as const;
 
@@ -42,6 +43,7 @@ function timeAgo(ts?: string) {
 export default function FleetDashboard() {
   const [pings, setPings] = useState<Record<string, Ping>>({});
   const [selected, setSelected] = useState<keyof typeof agents | null>(null);
+  const [events, setEvents] = useState<AgentEvent[]>([]);
 
   useEffect(() => {
     supabase.from("agent_pings").select("*").then(({ data }) => {
@@ -65,6 +67,28 @@ export default function FleetDashboard() {
       clearInterval(t);
     };
   }, []);
+
+  // Fetch events when agent selected
+  useEffect(() => {
+    if (!selected) { setEvents([]); return; }
+    supabase
+      .from("agent_events")
+      .select("*")
+      .eq("agent_id", selected)
+      .order("created_at", { ascending: false })
+      .limit(30)
+      .then(({ data }) => { if (data) setEvents(data as AgentEvent[]); });
+
+    const evCh = supabase
+      .channel(`events-${selected}`)
+      .on("postgres_changes" as any, { event: "INSERT", schema: "public", table: "agent_events", filter: `agent_id=eq.${selected}` }, (payload: any) => {
+        const row = payload.new as AgentEvent;
+        if (row?.id) setEvents((prev) => [row, ...prev].slice(0, 30));
+      })
+      .subscribe();
+
+    return () => { evCh.unsubscribe(); };
+  }, [selected]);
 
   const fleetIds: (keyof typeof agents)[] = ["sho", "nao", "tai", "yui", "jin", "kou", "zen", "rin"];
   const s = selected ? agents[selected] : null;
@@ -131,6 +155,22 @@ export default function FleetDashboard() {
               <div className="detail-row"><span className="label">Theme</span><span className="value">{s.theme}</span></div>
               <div className="detail-row"><span className="label">Created</span><span className="value">{s.created}</span></div>
             </div>
+            <div className="detail-section">
+              <h3>Realtime Stream</h3>
+              <div className="event-stream">
+                {events.length === 0 ? (
+                  <div className="event-empty">No recent events yet.</div>
+                ) : (
+                  events.map((ev) => (
+                    <div key={ev.id} className="event-row">
+                      <div className="event-time">{timeAgo(ev.created_at)}</div>
+                      <div className="event-type">{ev.event_type.replace("_", " ")}</div>
+                      <div className="event-desc">{ev.description || "—"}</div>
+                    </div>
+                  ))
+                )}
+              </div>
+            </div>
           </>
         )}
       </aside>
@@ -176,6 +216,13 @@ export default function FleetDashboard() {
         .value.active-val { color:#22c55e; }
         .value.idle-val { color:#f59e0b; }
         .value.offline-val { color:#666; }
+        .event-stream { border:1px solid #1a1a1a; border-radius:10px; max-height:220px; overflow:auto; background:#0e0e10; }
+        .event-empty { color:#666; font-size:12px; padding:10px; }
+        .event-row { padding:8px 10px; border-bottom:1px solid #17171a; }
+        .event-row:last-child { border-bottom:none; }
+        .event-time { font-size:10px; color:#777; margin-bottom:2px; }
+        .event-type { font-size:10px; color:#9ca3af; text-transform:uppercase; letter-spacing:1px; margin-bottom:2px; }
+        .event-desc { font-size:12px; color:#d1d5db; line-height:1.3; }
         @media (max-width: 780px) { .fleet-grid { grid-template-columns: repeat(2,1fr); } }
       `}</style>
     </>

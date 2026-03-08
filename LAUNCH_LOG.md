@@ -60,6 +60,13 @@
 - Compliance: free MVP, non-technical public utility focus, dark monochrome IM style, no emoji, Infinite Machines footer, legal-safe disclaimer included.
 - Notes: Repo pushed (`doreisato/utility-shutoff-lifeline`), IM tile updated to `live` target URL; final healthcheck pending active deployment.
 
+## 2026-03-08 16:25 — Benefits Deadline Radar
+- Product: Benefits Deadline Radar
+- UVP: Track SNAP, Medicaid, WIC, and unemployment renewal deadlines before your coverage lapses.
+- URL: https://benefits-deadline-radar-production.up.railway.app
+- Status: deploying (service created on Railway with target port 8080)
+- Compliance: free MVP, non-technical audience, dark monochrome IM style, no emoji, legal-safe disclaimer on first screen, Infinite Machines footer.
+
 ## 2026-03-08 15:26 — Utility Shutoff Lifeline (Launch Confirmed)
 - Product: Utility Shutoff Lifeline
 - UVP: See your utility shutoff deadline, protections, and emergency action links in one screen before disconnection.

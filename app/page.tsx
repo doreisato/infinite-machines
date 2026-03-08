@@ -46,6 +46,14 @@ const projects: Project[] = [
     status: "live",
   },
   {
+    id: "benefits-deadline-radar",
+    name: "Benefits Deadline Radar",
+    description:
+      "Track SNAP, Medicaid, WIC, and unemployment renewal deadlines before your coverage lapses.",
+    url: "https://benefits-deadline-radar-production.up.railway.app",
+    status: "live",
+  },
+  {
     id: "housingalert",
     name: "HousingAlert",
     description:

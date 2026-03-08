@@ -12,3 +12,11 @@
 **Impact:** Eliminated confusion for first-time visitors seeing mismatched project names
 
 **Commit:** 13c6d2f
+
+## 2026-03-08 11:27 — Hourly Launch: FairBill
+
+**Checks:**
+- Verified FairBill Railway URL returns HTTP 200: `https://fairbill-production.up.railway.app`
+- Portfolio tile already present and marked `live` with production URL in `app/page.tsx`
+
+**Outcome:** Hourly winner is publicly reachable and represented in Infinite Machines project grid.

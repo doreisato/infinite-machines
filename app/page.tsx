@@ -19,11 +19,11 @@ const projects: Project[] = [
     status: "live",
   },
   {
-    id: "calm-minute",
-    name: "Calm Minute",
+    id: "microadventure-roulette",
+    name: "MicroAdventure Roulette",
     description:
-      "Free one-minute reset for calm, clarity, and daily delight. Guided breathing, grounding, and tiny joy actions.",
-    url: "https://roastmysite-production-a490.up.railway.app",
+      "Pick your time, energy, and vibe, then spin 3 instant mini-adventures to boost joy right now.",
+    url: "https://calm-minute-production.up.railway.app",
     status: "live",
   },
   {

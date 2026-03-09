@@ -65,3 +65,9 @@
 - Set status to `live` after HTTP 200 reachability check
 
 **Outcome:** Portfolio now reflects a happiness-first product category (calm/daily delight) on the main project grid.
+
+## 2026-03-08 20:20 CDT — Hourly launch: MicroAdventure Roulette
+- Updated project tile: Calm Minute -> MicroAdventure Roulette
+- UVP updated for happiness-first instant micro-adventures
+- URL set to https://calm-minute-production.up.railway.app
+- Status: live (URL reachable)

@@ -19,10 +19,10 @@ const projects: Project[] = [
     status: "live",
   },
   {
-    id: "microadventure-roulette",
-    name: "MicroAdventure Roulette",
+    id: "joy-break-roulette",
+    name: "Joy Break Roulette",
     description:
-      "Pick your time, energy, and vibe, then spin 3 instant mini-adventures to boost joy right now.",
+      "Get 3 tiny plans matched to your time and energy so you can lift your mood in minutes.",
     url: "https://calm-minute-production.up.railway.app",
     status: "live",
   },

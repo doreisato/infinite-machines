@@ -22,7 +22,7 @@ const projects: Project[] = [
     id: "joy-break-roulette",
     name: "Joy Break Roulette",
     description:
-      "Get 3 tiny plans matched to your time and energy so you can lift your mood in minutes.",
+      "Free one-tap joy breaks: get 3 tiny plans matched to your time and energy in under a minute.",
     url: "https://calm-minute-production.up.railway.app",
     status: "live",
   },

@@ -93,3 +93,11 @@
 - Status: live (HTTP 200 verified)
 - Portfolio sync: Infinite Machines production tile verified visible with `status=live`, correct UVP, and Open Project URL set to `https://calm-minute-production.up.railway.app`.
 - Delegation: parallel sessions_send dispatch attempted to SHO/NAO/YUI/TAI/JIN; all timed out this cycle.
+
+## 2026-03-08 23:25 — Joy Break Roulette (Happiness-first refresh)
+- Product: Joy Break Roulette
+- UVP: Free one-tap joy breaks: get 3 tiny plans matched to your time and energy in under a minute.
+- URL: https://calm-minute-production.up.railway.app
+- Status: live (HTTP 200 verified)
+- Build update: added 5 new low-cost micro-adventures + clarified first-screen copy (free/no login/one tap).
+- Portfolio sync: Infinite Machines tile updated with latest UVP and kept `status=live` + correct Open Project URL.

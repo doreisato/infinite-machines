@@ -107,3 +107,12 @@
 - UVP: Free one-tap joy breaks: get 3 tiny plans for joy, calm, curiosity, or connection in under a minute.
 - URL: https://calm-minute-production.up.railway.app
 - Status: live
+
+## 2026-03-10 06:29 CDT — Tiny Reunion (Hourly Launch)
+- Product: Tiny Reunion
+- UVP: Reconnect with someone you miss using a simple, zero-pressure message template.
+- URL: https://tiny-reunion-production.up.railway.app
+- Status: live (HTTP 200 verified)
+- Portfolio sync: Infinite Machines production tile updated to Tiny Reunion with `status=live` and verified visible on live site.
+- Compliance: free MVP, non-technical audience, dark monochrome IM style, happiness-first (connection + delight), excluded finance/hardship categories avoided.
+- Delegation: parallel sessions_send dispatch to SHO/NAO/YUI/TAI/JIN executed; NAO returned final UVP copy in-cycle.

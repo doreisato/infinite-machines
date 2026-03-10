@@ -80,3 +80,9 @@
 
 ## 2026-03-09 23:4x CDT
 - Updated Joy Break Roulette tile UVP to explicitly include joy/calm/curiosity/connection while keeping status=live and current Railway URL.
+
+## 2026-03-10 06:29 CDT — Hourly launch: Tiny Reunion
+- Updated project tile: Joy Break Roulette -> Tiny Reunion
+- UVP: Reconnect with someone you miss using a simple, zero-pressure message template.
+- URL set to https://tiny-reunion-production.up.railway.app
+- Status: live (HTTP 200 verified)

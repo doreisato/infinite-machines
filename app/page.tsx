@@ -11,11 +11,11 @@ interface Project {
 
 const projects: Project[] = [
   {
-    id: "joy-break-roulette",
-    name: "Joy Break Roulette",
+    id: "tiny-reunion",
+    name: "Tiny Reunion",
     description:
-      "Free one-tap joy breaks: get 3 tiny plans for joy, calm, curiosity, or connection in under a minute.",
-    url: "https://calm-minute-production.up.railway.app",
+      "Reconnect with someone you miss using a simple, zero-pressure message template.",
+    url: "https://tiny-reunion-production.up.railway.app",
     status: "live",
   },
 ];

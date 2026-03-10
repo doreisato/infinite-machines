@@ -11,30 +11,6 @@ interface Project {
 
 const projects: Project[] = [
   {
-    id: "wageshield",
-    name: "WageShield",
-    description:
-      "Instant overtime and wage calculator for hourly workers. Clear pay math and missed-pay estimates without signup.",
-    url: "https://roastmysite-production-a490.up.railway.app",
-    status: "live",
-  },
-  {
-    id: "fairbill",
-    name: "FairBill",
-    description:
-      "Medicare-benchmarked pricing for medical bills. Get negotiation leverage before collections. CPT code lookup in seconds.",
-    url: "https://fairbill-production.up.railway.app",
-    status: "live",
-  },
-  {
-    id: "utility-shutoff-lifeline",
-    name: "Utility Shutoff Lifeline",
-    description:
-      "See your utility shutoff deadline, protections, and emergency action links in one screen before disconnection.",
-    url: "https://utility-shutoff-lifeline-production.up.railway.app",
-    status: "live",
-  },
-  {
     id: "joy-break-roulette",
     name: "Joy Break Roulette",
     description:
@@ -62,7 +38,7 @@ export default function Home() {
             Infinite Machines
           </h1>
           <p className="text-neutral-500 text-lg md:text-xl tracking-wide">
-            Financial protection + human happiness, shipped fast
+            Joy-first apps for human happiness
           </p>
         </div>
 

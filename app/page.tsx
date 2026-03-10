@@ -11,19 +11,11 @@ interface Project {
 
 const projects: Project[] = [
   {
-    id: "benefits-navigator",
-    name: "Benefits Navigator",
+    id: "wageshield",
+    name: "WageShield",
     description:
-      "Find government benefits you qualify for. Free one-minute pre-screen for SNAP, Medicaid, WIC, and LIHEAP.",
-    url: "https://benefits-navigator-production.up.railway.app",
-    status: "live",
-  },
-  {
-    id: "joy-break-roulette",
-    name: "Joy Break Roulette",
-    description:
-      "Free one-tap joy breaks: get 3 tiny plans for joy, calm, curiosity, or connection in under a minute.",
-    url: "https://calm-minute-production.up.railway.app",
+      "Instant overtime and wage calculator for hourly workers. Clear pay math and missed-pay estimates without signup.",
+    url: "https://roastmysite-production-a490.up.railway.app",
     status: "live",
   },
   {
@@ -43,20 +35,12 @@ const projects: Project[] = [
     status: "live",
   },
   {
-    id: "benefits-deadline-radar",
-    name: "Benefits Deadline Radar",
+    id: "joy-break-roulette",
+    name: "Joy Break Roulette",
     description:
-      "Track SNAP, Medicaid, WIC, and unemployment renewal deadlines before your coverage lapses.",
-    url: "https://benefits-deadline-radar-production.up.railway.app",
+      "Free one-tap joy breaks: get 3 tiny plans for joy, calm, curiosity, or connection in under a minute.",
+    url: "https://calm-minute-production.up.railway.app",
     status: "live",
-  },
-  {
-    id: "housingalert",
-    name: "HousingAlert",
-    description:
-      "Email alerts when affordable housing waitlists open in your county. Never miss Section 8 or public housing opportunities.",
-    url: "https://housingalert-production.up.railway.app",
-    status: "planned",
   },
 ];
 
@@ -78,7 +62,7 @@ export default function Home() {
             Infinite Machines
           </h1>
           <p className="text-neutral-500 text-lg md:text-xl tracking-wide">
-            Systems that ship what matters
+            Financial protection + human happiness, shipped fast
           </p>
         </div>
 
